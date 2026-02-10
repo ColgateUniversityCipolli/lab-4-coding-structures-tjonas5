@@ -454,19 +454,65 @@ window.Quarto = {
 </section>
 <section id="part-e-1" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="part-e-1"><span class="header-section-number">2.5</span> Part e</h2>
-<p>Similar to Part c.&nbsp;Find the name of the Instructions section of the website and pull the HTML of the function using <code>html_element(...)</code> and save the results to an object called <code>instructions.section</code>.<br></p>
+<p>Similar to Part c.&nbsp;Find the name of the Instructions section of the website and pull the HTML of the function using <code>html_element(...)</code> and save the results to an object called <code>instructions.section</code>.<br> <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>instructions.section<span class="ot">=</span><span class="fu">html_element</span>(grilled.cheese, <span class="st">"#instructions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
 </section>
 <section id="part-f-1" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="part-f-1"><span class="header-section-number">2.6</span> Part f</h2>
-<p>Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from <code>instructions.section</code> using <code>html_elements(...)</code> (note the added s) and save the results to an object called <code>instructions</code>.</p>
+<p>Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from <code>instructions.section</code> using <code>html_elements(...)</code> (note the added s) and save the results to an object called <code>instructions</code>. <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">html_elements</span>(instructions.section, <span class="st">'*'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (7)}
+[1] &lt;h2 class="anchored" data-anchor-id="instructions"&gt;Instructions&lt;/h2&gt;
+[2] &lt;ol type="1"&gt;\n&lt;li&gt;In a frying pan, heat 2 tablespoons olive oil with chi ...
+[3] &lt;li&gt;In a frying pan, heat 2 tablespoons olive oil with chili flakes.&lt;/li&gt;
+[4] &lt;li&gt;Add spinach and cook until wilted.&lt;/li&gt;
+[5] &lt;li&gt;Mix gochujang and mayonnaise in a small bowl and spread on one side o ...
+[6] &lt;li&gt;Build sandwiches by layering spinach, kimchi, and cheese between two  ...
+[7] &lt;li&gt;Fry in butter until golden brown on both sides.&lt;/li&gt;</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>instructions<span class="ot">=</span><span class="fu">html_elements</span>(instructions.section, <span class="st">'li'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
 </section>
 <section id="part-g-1" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="part-g-1"><span class="header-section-number">2.7</span> Part g</h2>
-<p>Find the class of the recipe image and pull the HTML using <code>html_element(...)</code> and save the results to an object called <code>image.element</code>. <br> <strong>Hint</strong>: You can ask for elements by class using a preceeding “.”. See <code>?html_element(...)</code> for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one.</p>
+<p>Find the class of the recipe image and pull the HTML using <code>html_element(...)</code> and save the results to an object called <code>image.element</code>. <br> <strong>Hint</strong>: You can ask for elements by class using a preceeding “.”. See <code>?html_element(...)</code> for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one. <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>image.element<span class="ot">=</span><span class="fu">html_element</span>(grilled.cheese, <span class="st">'.img-fluid'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
 </section>
 <section id="part-h-1" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="part-h-1"><span class="header-section-number">2.8</span> Part h</h2>
-<p>Use the <code>html_attr(...)</code> function to pull the source link (“src”). Then, use <code>paste(...)</code> to prepend the source link with “website/” so we have the full link.<br> <strong>Note</strong>: This would be like adding “https://www.website.com” to get the absolute link.</p>
+<p>Use the <code>html_attr(...)</code> function to pull the source link (“src”). Then, use <code>paste(...)</code> to prepend the source link with “website/” so we have the full link.<br> <strong>Note</strong>: This would be like adding “https://www.website.com” to get the absolute link. <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>source.link<span class="ot">=</span><span class="fu">html_attr</span>(grilled.cheese, <span class="st">'src'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
 </section>
 <section id="part-i-1" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="part-i-1"><span class="header-section-number">2.9</span> Part i</h2>
@@ -476,8 +522,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># width="50%" shrinks the image for printing</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">'&lt;img src="'</span>, image.url, <span class="st">'" style="width: 50%; height: auto;"&gt;'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># width="50%" shrinks the image for printing</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">'&lt;img src="'</span>, image.url, <span class="st">'" style="width: 50%; height: auto;"&gt;'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>
@@ -486,8 +532,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">html_text</span>(ingredients))</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">html_text</span>(ingredients))</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>
@@ -496,8 +542,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"1."</span>, <span class="fu">html_text</span>(instructions))</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"1."</span>, <span class="fu">html_text</span>(instructions))</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>

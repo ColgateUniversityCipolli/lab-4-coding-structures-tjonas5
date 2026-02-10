@@ -249,17 +249,38 @@ ingredients=html_elements(ingredients.section, 'li')
 
 ## Part e
 Similar to Part c. Find the name of the Instructions section of the website and pull the HTML of the function using `html_element(...)` and save the results to an object called `instructions.section`.<br/>
+**Solution**
+```{r}
+instructions.section=html_element(grilled.cheese, "#instructions")
+
+```
 
 ## Part f
 Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from `instructions.section` using `html_elements(...)` (note the added s) and save the results to an object called `instructions`.
+**Solution**
+```{r}
+html_elements(instructions.section, '*')
+instructions=html_elements(instructions.section, 'li')
+
+```
 
 ## Part g
 Find the class of the recipe image and pull the HTML using `html_element(...)` and save the results to an object called `image.element`. <br/>
 **Hint**: You can ask for elements by class using a preceeding ".". See `?html_element(...)` for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one.
+**Solution**
+```{r}
+image.element=html_element(grilled.cheese, '.img-fluid')
+```
 
 ## Part h
 Use the `html_attr(...)` function to pull the source link ("src"). Then, use `paste(...)` to prepend the source link with "website/" so we have the full link.<br/>
 **Note**: This would be like adding "https://www.website.com" to get the absolute link.
+**Solution**
+```{r}
+source.link=html_attr(grilled.cheese, 'src')
+
+
+```
 
 ## Part i
 Now that we have all the things we need, let's try to print the recipe. Below, I have written code to print from the objects. One by one, remove `#| eval: false` from the YAML header and add `#| echo: false` and `#| results: 'asis'`, and test. Let me know if you're stuck!
