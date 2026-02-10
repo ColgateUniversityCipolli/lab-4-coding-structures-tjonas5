@@ -212,7 +212,7 @@ For part j, it is not possible to write in one line because the value returned d
 Install and load the `rvest` package [@rvest].
 **Solution**
 ```{r}
-install.packages('rvest')
+# install.packages('rvest')
 library(rvest)
 ```
 
@@ -223,7 +223,7 @@ Load the html of the `website/KimchiGrilledCheese.html` using the `read_html()` 
 **Hint**: You can use `read_html(...)` like `read.csv(...)`. Don't forget you can use the documentation to help use it.
 **Solution**
 ```{r}
-read_html('website/KimchiGrilledCheese.html')
+grilled.cheese=read_html('website/KimchiGrilledCheese.html')
 
 ```
 
@@ -233,10 +233,19 @@ Open the html file in a web browser and open developer tools. In chrome-based br
 
 Find the name of the Ingredients section of the website and pull the HTML of the function using `html_element(...)` and save the results to an object called `ingredients.section`. <br/>
 **Hint**: You can ask for elements by id using a preceeding "\#". See `?html_element(...)` for a helpful example. 
+**Solution**
+```{r}
+ingredients.section=html_element(grilled.cheese, "#ingredients")
+```
 
 ## Part d
 Now, we want to obtain all of the itemized items. Find the element type the individual ingredients and pull all of them from `ingredients.section` using `html_elements(...)` (note the added s) and save the results to an object called `ingredients`.<br/>
 **Hint**: You can ask for elements by type by simply specifying the tag (e.g., "p" for paragraph). See `?html_element for a helpful example.
+**Solution**
+```{r}
+html_elements(ingredients.section, '*')
+ingredients=html_elements(ingredients.section, 'li')
+```
 
 ## Part e
 Similar to Part c. Find the name of the Instructions section of the website and pull the HTML of the function using `html_element(...)` and save the results to an object called `instructions.section`.<br/>
