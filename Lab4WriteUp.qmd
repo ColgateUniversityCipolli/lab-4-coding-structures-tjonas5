@@ -287,9 +287,9 @@ Now that we have all the things we need, let's try to print the recipe. Below, I
 **Image**
 
 ```{r}
-# width="50%" shrinks the image for printing
 #| echo: false
 #| results: 'asis'
+# width="50%" shrinks the image for printing
 cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
 ```
 

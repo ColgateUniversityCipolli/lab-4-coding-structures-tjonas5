@@ -520,18 +520,7 @@ window.Quarto = {
 <p>Now that we have all the things we need, let’s try to print the recipe. Below, I have written code to print from the objects. One by one, remove <code>#| eval: false</code> from the YAML header and add <code>#| echo: false</code> and <code>#| results: 'asis'</code>, and test. Let me know if you’re stuck!</p>
 <p><strong>Image</strong></p>
 <p></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># width="50%" shrinks the image for printing</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="co">#| echo: false</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="co">#| results: 'asis'</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">'&lt;img src="'</span>, image.url, <span class="st">'" style="width: 50%; height: auto;"&gt;'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;img src=" website/images/KimchiGrilledCheese.jpg " style="width: 50%; height: auto;"&gt;</code></pre>
-</div>
-</div>
+<p><img src=" website/images/KimchiGrilledCheese.jpg " style="width: 50%; height: auto;"></p>
 <p></p>
 <p><strong>Ingredients</strong></p>
 <p></p>

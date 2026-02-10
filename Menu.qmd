@@ -85,8 +85,7 @@ dinner <- c("website/AfricanPeanutSoup.html",
 ```
 **Solution**
 ```{r}
-sample(breakfasts, 1)
-sample(dinner, 3)
+(meals=c(sample(breakfasts, 1), sample(dinner, 3)))
 ```
 
 # Ingredients
