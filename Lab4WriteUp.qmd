@@ -79,7 +79,10 @@ x <- sample(x=1:10,          # sample from 1, 2, 3, ..., 10
             size=10,         # sample of 10
             replace = TRUE)  # allowed to sample the same item multiple times
 ```
-
+**Solution**
+```{r}
+x[3]
+```
 ## Part b
 
 Below, I create a data frame filled with random observations.
@@ -100,15 +103,34 @@ df <- data.frame(x1 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10
 
 ## Part b 
 Use the `head(...)` function to peek at the data frame.
+**Solution**
+```{r}
+head(df)
 
+
+```
 ## Part c
 Ask for the column `x1`.
+**Solution**
+```{r}
+df$x1
+```
 
 ## Part d
 Ask for the fifth row of the data frame.
+**Solution**
+```{r}
+df[5,]
+
+```
 
 ## Part e
 Ask for the the value of `x1` in the fifth row of the data frame.
+**Solution**
+```{r}
+
+
+```
 
 ## Part f
 Ask for the the value of in the third column and the fifth row of the data frame.
