@@ -277,9 +277,8 @@ Use the `html_attr(...)` function to pull the source link ("src"). Then, use `pa
 **Note**: This would be like adding "https://www.website.com" to get the absolute link.
 **Solution**
 ```{r}
-source.link=html_attr(grilled.cheese, 'src')
-
-
+source.link=html_attr(image.element, "src")
+image.url=paste("website/", source.link, sep="")
 ```
 
 ## Part i
@@ -288,15 +287,17 @@ Now that we have all the things we need, let's try to print the recipe. Below, I
 **Image**
 
 ```{r}
-#| eval: false
 # width="50%" shrinks the image for printing
+#| echo: false
+#| results: 'asis'
 cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
 ```
 
 **Ingredients**
 
 ```{r}
-#| eval: false
+#| echo: false
+#| results: 'asis'
 formatted_list <- paste("-", html_text(ingredients))
 cat(formatted_list, sep = "\n")
 ```
@@ -304,7 +305,8 @@ cat(formatted_list, sep = "\n")
 **Instructions**
 
 ```{r}
-#| eval: false
+#| echo: false
+#| results: 'asis'
 formatted_list <- paste("1.", html_text(instructions))
 cat(formatted_list, sep = "\n")
 ```

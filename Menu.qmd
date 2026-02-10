@@ -83,8 +83,15 @@ dinner <- c("website/AfricanPeanutSoup.html",
             "website/SalmonChowder.html",
             "website/Shakshuka.html")
 ```
+**Solution**
+```{r}
+sample(breakfasts, 1)
+sample(dinner, 3)
+```
 
 # Ingredients
+
+
 
 \newpage
 
