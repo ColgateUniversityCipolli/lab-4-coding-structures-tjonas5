@@ -162,22 +162,70 @@ Write a function called `calculate.score(...)` that takes three arguments repres
 $$Score = (x_1 \times 2) + x_2 - x_3$$
 Use your function to create a new column `total.score` in our data frame `df`.
 **Solution**
+```{r}
+calculate.score = function(x1, x2, x3){
+  x1*2+x2-x3
+}
+
+n <- nrow(df)                
+df$total.score <- rep(NA, nrow(df))
+for(i in 1:nrow(df)){
+  df$total.score[i]=calculate.score(df$x1[i], df$x2[i], df$x3[i])
+}
+df$total.score
+```
+
 ## Part j
 Create a function called `evaluate.row(...)` that takes one argument and returns "low" when the argument is less than 4, "mid" when the argument is between 4 and 7 (inclusive), and "high" when the arguement is 8 or larger. Then, use `sapply(...)` to apply it to column `x1`.
+**Solution**
+```{r}
+evaluate.row = function(x){
+  if(x < 4)
+    return("low")
+  else if(x <= 7)
+    return("mid")
+  else if (x >= 8)
+    return("high")
+ }
+sapply(df$x1, evaluate.row)
+```
 
 ## Part k
 Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.
+**Solution**
+For part h, it is possible to multiply the columns together to get the same result as using a loop.
+```{r}
+df$test=df$x1*df$x2
+```
+
+For part i, a similar thing can be done to part h to get it done in one line.
+```{r}
+df$total.score.test=2*df$x1+df$x2-df$x3
+```
+
+For part j, it is not possible to write in one line because the value returned depends on a condition, which requires a conditional statement to address. This takes up more than one line.
 
 # Complete Tasks for One Recipe
 
 ## Part a
 
 Install and load the `rvest` package [@rvest].
+**Solution**
+```{r}
+install.packages('rvest')
+library(rvest)
+```
+
 
 ## Part b
 
 Load the html of the `website/KimchiGrilledCheese.html` using the `read_html()` function. We will use the Kimchi Grilled Cheese recipe as our prototype and extend this workflow to all recipes, so try to be as general as possible. If you do look at it, you'll notice it contains the html we saw in the developer tools in class.<br/>
 **Hint**: You can use `read_html(...)` like `read.csv(...)`. Don't forget you can use the documentation to help use it.
+**Solution**
+```{r}
+read_html('website/KimchiGrilledCheese.html')
+
+```
 
 ## Part c
 

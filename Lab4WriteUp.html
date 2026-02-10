@@ -314,11 +314,72 @@ window.Quarto = {
 </section>
 <section id="part-i" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="part-i"><span class="header-section-number">1.8</span> Part i</h2>
-<p>Write a function called <code>calculate.score(...)</code> that takes three arguments representing <code>x1</code>, <code>x2</code>, and <code>x3</code>) and returns a single value based on the formula: <span class="math display">\[Score = (x_1 \times 2) + x_2 - x_3\]</span> Use your function to create a new column <code>total.score</code> in our data frame <code>df</code>. <strong>Solution</strong> ## Part j Create a function called <code>evaluate.row(...)</code> that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use <code>sapply(...)</code> to apply it to column <code>x1</code>.</p>
+<p>Write a function called <code>calculate.score(...)</code> that takes three arguments representing <code>x1</code>, <code>x2</code>, and <code>x3</code>) and returns a single value based on the formula: <span class="math display">\[Score = (x_1 \times 2) + x_2 - x_3\]</span> Use your function to create a new column <code>total.score</code> in our data frame <code>df</code>. <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>calculate.score <span class="ot">=</span> <span class="cf">function</span>(x1, x2, x3){</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  x1<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span>x2<span class="sc">-</span>x3</span>
+<span id="cb18-3"><a href="#cb18-3"></a>}</span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)                </span>
+<span id="cb18-6"><a href="#cb18-6"></a>df<span class="sc">$</span>total.score <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">nrow</span>(df))</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)){</span>
+<span id="cb18-8"><a href="#cb18-8"></a>  df<span class="sc">$</span>total.score[i]<span class="ot">=</span><span class="fu">calculate.score</span>(df<span class="sc">$</span>x1[i], df<span class="sc">$</span>x2[i], df<span class="sc">$</span>x3[i])</span>
+<span id="cb18-9"><a href="#cb18-9"></a>}</span>
+<span id="cb18-10"><a href="#cb18-10"></a>df<span class="sc">$</span>total.score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  9 11 10 10  3  4 11  9  4  7</code></pre>
+</div>
+</div>
+<p></p>
 </section>
-<section id="part-k" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="part-k"><span class="header-section-number">1.9</span> Part k</h2>
-<p>Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.</p>
+<section id="part-j" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="part-j"><span class="header-section-number">1.9</span> Part j</h2>
+<p>Create a function called <code>evaluate.row(...)</code> that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use <code>sapply(...)</code> to apply it to column <code>x1</code>. <strong>Solution</strong></p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>evaluate.row <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">4</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    <span class="fu">return</span>(<span class="st">"low"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="cf">else</span> <span class="cf">if</span>(x <span class="sc">&lt;=</span> <span class="dv">7</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    <span class="fu">return</span>(<span class="st">"mid"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">8</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="fu">return</span>(<span class="st">"high"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8"></a> }</span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">sapply</span>(df<span class="sc">$</span>x1, evaluate.row)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "high" "low"  "mid"  "low"  "low"  "low"  "low"  "low"  "mid"  "low" </code></pre>
+</div>
+</div>
+<p></p>
+</section>
+<section id="part-k" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="part-k"><span class="header-section-number">1.10</span> Part k</h2>
+<p>Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why. <strong>Solution</strong> For part h, it is possible to multiply the columns together to get the same result as using a loop.</p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df<span class="sc">$</span>test<span class="ot">=</span>df<span class="sc">$</span>x1<span class="sc">*</span>df<span class="sc">$</span>x2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
+<p>For part i, a similar thing can be done to part h to get it done in one line.</p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df<span class="sc">$</span>total.score.test<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span>df<span class="sc">$</span>x1<span class="sc">+</span>df<span class="sc">$</span>x2<span class="sc">-</span>df<span class="sc">$</span>x3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p></p>
+<p>For part j, it is not possible to write in one line because the value returned depends on a condition, which requires a conditional statement to address. This takes up more than one line.</p>
 </section>
 </section>
 <section id="complete-tasks-for-one-recipe" class="level1" data-number="2">
@@ -364,8 +425,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># width="50%" shrinks the image for printing</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">'&lt;img src="'</span>, image.url, <span class="st">'" style="width: 50%; height: auto;"&gt;'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># width="50%" shrinks the image for printing</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">'&lt;img src="'</span>, image.url, <span class="st">'" style="width: 50%; height: auto;"&gt;'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>
@@ -374,8 +435,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">html_text</span>(ingredients))</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">html_text</span>(ingredients))</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>
@@ -384,8 +445,8 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"1."</span>, <span class="fu">html_text</span>(instructions))</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>formatted_list <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"1."</span>, <span class="fu">html_text</span>(instructions))</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">cat</span>(formatted_list, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p></p>
