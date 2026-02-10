@@ -45,6 +45,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 #| label: load-packages
 #| include: false
 library(tidyverse)
+library(rvest)
 ```
 
 <!-- Code For Building Menu Here -->
@@ -83,27 +84,97 @@ dinner <- c("website/AfricanPeanutSoup.html",
             "website/SalmonChowder.html",
             "website/Shakshuka.html")
 ```
-**Solution**
+
 ```{r}
-(meals=c(sample(breakfasts, 1), sample(dinner, 3)))
+#| include: false
+meals=vector()
+breakfast=sample(breakfasts, 1)
+dinners=sample(dinner, 3)
+(meals=c(breakfast, dinners))
 ```
 
 # Ingredients
+```{r}
+#| echo: false
+#| results: 'asis'
+ingredients.all = vector()
+for(i in 1:length(meals)){
+  meal=read_html(meals[i])
+  ingredients.section=html_element(meal, "#ingredients")
+  ingredients=html_elements(ingredients.section, 'li')
+  formatted_list <- paste("-", html_text(ingredients))
+  cat(formatted_list, sep = "\n")
+}
 
 
+```
 
 \newpage
 
 # Recipe One
+```{r}
+#| echo: false
+#| results: 'asis'
+meal=read_html(meals[2])
+image.element=html_element(meal, '.img-fluid')
+source.link=html_attr(image.element, "src")
+image.url=paste("website/", source.link, sep="")
+cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
+instructions.section=html_element(meal, "#instructions")
+instructions=html_elements(instructions.section, 'li')
+formatted_list <- paste("1.", html_text(instructions))
+cat(formatted_list, sep = "\n")
+```
+
+
 
 \newpage
 
 # Recipe Two
+```{r}
+#| echo: false
+#| results: 'asis'
+meal=read_html(meals[3])
+image.element=html_element(meal, '.img-fluid')
+source.link=html_attr(image.element, "src")
+image.url=paste("website/", source.link, sep="")
+cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
+instructions.section=html_element(meal, "#instructions")
+instructions=html_elements(instructions.section, 'li')
+formatted_list <- paste("1.", html_text(instructions))
+cat(formatted_list, sep = "\n")
+```
 
 \newpage
 
 # Recipe Three
+```{r}
+#| echo: false
+#| results: 'asis'
+meal=read_html(meals[4])
+image.element=html_element(meal, '.img-fluid')
+source.link=html_attr(image.element, "src")
+image.url=paste("website/", source.link, sep="")
+cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
+instructions.section=html_element(meal, "#instructions")
+instructions=html_elements(instructions.section, 'li')
+formatted_list <- paste("1.", html_text(instructions))
+cat(formatted_list, sep = "\n")
+```
 
 \newpage
 
 # Breakfast Recipe
+```{r}
+#| echo: false
+#| results: 'asis'
+meal=read_html(meals[1])
+image.element=html_element(meal, '.img-fluid')
+source.link=html_attr(image.element, "src")
+image.url=paste("website/", source.link, sep="")
+cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
+instructions.section=html_element(meal, "#instructions")
+instructions=html_elements(instructions.section, 'li')
+formatted_list <- paste("1.", html_text(instructions))
+cat(formatted_list, sep = "\n")
+```

@@ -329,10 +329,17 @@ Read [https://www.scrapingbee.com/blog/is-web-scraping-legal/](Is Web Sraping Le
 
 ## Conditionals
 Did you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?
+**Solution**
+I did not use any conditionals. 
+
 
 ## Loops
 Did you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?
+**Solution**
+I did not use loops in my code. I could have looped over the different recipies, but instead I copy and pasted the code three times.
 
 ## Functions
 Did you use functions in your code? If yes, how. If not, are there places you could have used them but did something else?
+**Solution**
+I did not use any functions. I could have created a function for grabbing the instructions from the html, but instead I copy pasted my code each time. 
 
